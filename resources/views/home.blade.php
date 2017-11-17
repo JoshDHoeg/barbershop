@@ -13,7 +13,7 @@
                             @auth
                                 <a href="{{ url('/edit') }}">edit</a>
                             @else
-                                <a href="{{ route('register') }}">Book Appointment</a>
+                                <a href="{{ route('booking.create') }}">Book Appointment</a>
                             @endauth
                         <!-- </div> -->
                     @endif

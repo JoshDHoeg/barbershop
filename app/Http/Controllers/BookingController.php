@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+
+use App\Booking;
+class BookingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        return view('home');
+        //
     }
 
     /**
@@ -23,7 +25,7 @@ class StoreController extends Controller
      */
     public function create()
     {
-        //
+        return  view('booking.create');
     }
 
     /**
@@ -34,8 +36,27 @@ class StoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // validate the Database
+        $this->validate($request, array(
+          'first' => 'required|max:255',
+          'last' => 'required|max:255',
+          'phone' => 'required|max:255'
+        ));
+
+        //store in the Database
+        $booking = new Booking;
+
+        $booking->first = $request->first;
+        $booking->last = $request->last;
+        $booking->phone = $request->phone;
+
+        $booking->save();
+
+        //then redirect to home
+        return redirect()->route('store.index');
     }
+
+    protected $redirectTo = '/';
 
     /**
      * Display the specified resource.
