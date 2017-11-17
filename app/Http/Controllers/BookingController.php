@@ -21,7 +21,6 @@ class BookingController extends Controller
         $count = $bookings->count();
 
         //return a view and pass in the variable
-        // return View::make("booking.index")->with($count);
         return view("booking.index", ["bookings"=>$bookings, "count"=>$count]);
     }
 
@@ -60,44 +59,9 @@ class BookingController extends Controller
         $booking->save();
 
         //then redirect to home
-        return view('home');
+        return redirect()->route('store.index');
     }
 
-    protected $redirectTo = '/';
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
@@ -105,7 +69,7 @@ class BookingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    protected function destroy($id)
     {
         //first build variable to hold thing we are deleting
         $booking = Bookings::find($id);
@@ -113,6 +77,6 @@ class BookingController extends Controller
         $booking->delete();
 
         //then redirect to home
-        return view('home');
+        return redirect()->route('store.index');
     }
 }

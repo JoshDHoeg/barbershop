@@ -11,6 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+      DB::table('shops')->insert([
+        'name' => "The Fresh Cut",
+        'description' => 'The fresh Cut description.'
+      ]);
     }
 }

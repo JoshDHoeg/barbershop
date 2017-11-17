@@ -8,7 +8,7 @@
                         @auth
 
                         @else
-                            <a href="{{ route('booking.create') }}">Book Appointment</a>
+                            <a class="btn btn-primary btn-block" href="{{ route('booking.create') }}">Book Appointment</a>
                         @endauth
                 @endif
 

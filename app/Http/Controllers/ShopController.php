@@ -15,40 +15,16 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+      //createa variable that stores all CreateBookingsTable
+      $shop = Shop::find(1);
+
+      //return a view and pass in the variable
+      return view("home", ["shop"=>$shop]);
+        //
+        // return view('home');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -56,7 +32,7 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    protected function edit($id)
     {
         //find post inte database and save as get_class_vars
         $shop = Shop::find($id);
@@ -72,19 +48,28 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    protected function update(Request $request, $id)
     {
-        //
+      $shopinitial = Shop::find(1);
+      $shopinitial->delete();
+
+      // validate the Database
+      $this->validate($request, array(
+        'name' => 'required|max:255',
+        'description' => 'required',
+      ));
+
+      //store in the Database
+      $shop = new Shop;
+      $shop->id = 1;
+      $shop->name = $request->input('name');
+      $shop->description = $request->input('description');
+
+      $shop->save();
+
+
+      //then redirect to home
+      return redirect()->route('store.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

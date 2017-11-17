@@ -11,12 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-
 Auth::routes();
 
+Route::get('/', 'ShopController@index')->name('home');
 Route::get('/edit', 'ShopController@index')->name('edit');
 
 Route::resources([

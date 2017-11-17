@@ -8,45 +8,31 @@
                         <div class="panel-heading">Edit Shop Details</div>
 
                         <div class="panel-body">
-                            <form class="form-horizontal" method="POST" action="{{ route('store.edit') }}">
-                                {{ csrf_field() }}
+                          {!! Form::model($shop, ['route' => ['store.update', $shop->id], 'method' => 'PUT']) !!}
 
-                                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <label for="name" class="col-md-4 control-label">Name</label>
 
-                                    <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                            {!! Form::label('name', 'Name:') !!}
+                            {!! Form::text('name', null, ["class" => 'form-control input-lg']) !!}
 
-                                        @if ($errors->has('name'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('name') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
 
-                                <div class="form-group{{ $errors->has('description') ? ' has-error' : '' }}">
-                                    <label for="email" class="col-md-4 control-label">Description</label>
+                            {!! Form::label('description', 'Name:', ["class" => 'form-spacing-top']) !!}
+                            {!! Form::text('description', null, ["class" => 'form-control input-lg']) !!}
 
-                                    <div class="col-md-6">
-                                        <input id="description" type="text" class="form-control" name="description" value="{{ old('description') }}" required>
 
-                                        @if ($errors->has('description'))
-                                            <span class="help-block">
-                                                <strong>{{ $errors->first('description') }}</strong>
-                                            </span>
-                                        @endif
-                                    </div>
-                                </div>
+                            {!! Form::submit('Submit', ['class' => 'btn btn-primary btn-block']) !!}
+                          {!! Form::close() !!}
 
-                                <div class="form-group">
-                                    <div class="col-md-6 col-md-offset-4">
-                                        <button type="submit" class="btn btn-primary">
-                                            Register
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>
