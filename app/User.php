@@ -26,4 +26,10 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    //this section of code accounts for the one to many relationship between store and barbers
+    public function shop()
+    {
+      return $this->belongsTo('Store');
+    }
 }

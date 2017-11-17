@@ -11,7 +11,7 @@
                     @if (Route::has('login'))
                         <!-- <div class="top-right links"> -->
                             @auth
-                                <a href="{{ url('/edit') }}">edit</a>
+                                <a href="{{ url('/home') }}">edit</a>
                             @else
                                 <a href="{{ route('register') }}">Book Appointment</a>
                             @endauth
