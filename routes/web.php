@@ -13,8 +13,11 @@
 
 Auth::routes();
 
-Route::get('/', 'ShopController@index')->name('home');
-Route::get('/edit', 'ShopController@index')->name('edit');
+Route::get('/', function () {
+    return redirect()->route('store.index');
+});
+
+Route::get('/edit', 'ShopController@index')->middleware('auth');;
 
 Route::resources([
     'store' => 'ShopController',

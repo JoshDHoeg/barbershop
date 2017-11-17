@@ -79,4 +79,9 @@ class BookingController extends Controller
         //then redirect to home
         return redirect()->route('store.index');
     }
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only('destroy');
+    }
 }

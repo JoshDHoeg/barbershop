@@ -19,6 +19,11 @@ class CreateShopTable extends Migration
             $table->text('description');
             $table->timestamps();
         });
+
+        DB::table('shop')->insert([
+          'name' => "The Fresh Cut",
+          'description' => 'The fresh Cut description.'
+        ]);
     }
 
     /**

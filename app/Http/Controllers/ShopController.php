@@ -34,6 +34,8 @@ class ShopController extends Controller
      */
     protected function edit($id)
     {
+        $this->middleware('guest');
+
         //find post inte database and save as get_class_vars
         $shop = Shop::find($id);
 
@@ -70,6 +72,11 @@ class ShopController extends Controller
 
       //then redirect to home
       return redirect()->route('store.index');
+    }
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
     }
 
 }
