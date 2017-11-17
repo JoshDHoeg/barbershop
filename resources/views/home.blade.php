@@ -1,23 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+        <div class="flex-center position-ref full-height">
+            <div class="content">
+                <div class="title m-b-md">
+                    Barber
+                </div>
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
+                <div class="links">
+                    @if (Route::has('login'))
+                        <!-- <div class="top-right links"> -->
+                            @auth
+                                <a href="{{ url('/edit') }}">edit</a>
+                            @else
+                                <a href="{{ route('register') }}">Book Appointment</a>
+                            @endauth
+                        <!-- </div> -->
                     @endif
-
-                    You are logged in!
                 </div>
             </div>
         </div>
-    </div>
-</div>
+
 @endsection
