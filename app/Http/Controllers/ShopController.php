@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+use App\Shop;
+
+class ShopController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class StoreController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('edit');
     }
 
     /**
@@ -56,7 +58,11 @@ class StoreController extends Controller
      */
     public function edit($id)
     {
-        //
+        //find post inte database and save as get_class_vars
+        $shop = Shop::find($id);
+
+        //return the view and pass inthe var
+        return view("edit", ["shop"=>$shop]);
     }
 
     /**

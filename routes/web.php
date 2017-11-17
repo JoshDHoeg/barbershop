@@ -17,10 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/edit', 'StoreController@index')->name('edit');
+Route::get('/edit', 'ShopController@index')->name('edit');
 
 Route::resources([
-    'store' => 'StoreController',
+    'store' => 'ShopController',
     'booking' => 'BookingController'
   ]);

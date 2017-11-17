@@ -30,6 +30,6 @@ class User extends Authenticatable
     //this section of code accounts for the one to many relationship between store and barbers
     public function shop()
     {
-      return $this->belongsTo('Store');
+      return $this->belongsTo('Shop');
     }
 }

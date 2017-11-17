@@ -11,12 +11,13 @@
                     @if (Route::has('login'))
                         <!-- <div class="top-right links"> -->
                             @auth
-                                <a href="{{ url('/edit') }}">edit</a>
+                                <a href="{{ url('/store/1/edit') }}">edit</a>
                             @else
                                 <a href="{{ route('booking.create') }}">Book Appointment</a>
                             @endauth
                         <!-- </div> -->
                     @endif
+                    <a href="{{ route('booking.index') }}">See Bookings</a>
                 </div>
             </div>
         </div>

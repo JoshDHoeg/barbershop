@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Bookings;
 
-use App\Booking;
+
 class BookingController extends Controller
 {
     /**
@@ -15,7 +16,13 @@ class BookingController extends Controller
      */
     public function index()
     {
-        //
+        //createa variable that stores all CreateBookingsTable
+        $bookings = Bookings::all();
+        $count = $bookings->count();
+
+        //return a view and pass in the variable
+        // return View::make("booking.index")->with($count);
+        return view("booking.index", ["bookings"=>$bookings, "count"=>$count]);
     }
 
     /**
@@ -44,7 +51,7 @@ class BookingController extends Controller
         ));
 
         //store in the Database
-        $booking = new Booking;
+        $booking = new Bookings;
 
         $booking->first = $request->first;
         $booking->last = $request->last;

@@ -8,7 +8,7 @@
                         <div class="panel-heading">Edit Shop Details</div>
 
                         <div class="panel-body">
-                            <form class="form-horizontal" method="POST" action="{{ route('store.update') }}">
+                            <form class="form-horizontal" method="POST" action="{{ route('store.edit') }}">
                                 {{ csrf_field() }}
 
                                 <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
