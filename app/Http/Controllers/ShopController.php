@@ -15,7 +15,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('edit');
+        return view('home');
     }
 
     /**

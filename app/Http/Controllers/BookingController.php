@@ -60,7 +60,7 @@ class BookingController extends Controller
         $booking->save();
 
         //then redirect to home
-        return redirect()->route('store.index');
+        return view('home');
     }
 
     protected $redirectTo = '/';
@@ -107,6 +107,12 @@ class BookingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        //first build variable to hold thing we are deleting
+        $booking = Bookings::find($id);
+        //delete the particular
+        $booking->delete();
+
+        //then redirect to home
+        return view('home');
     }
 }

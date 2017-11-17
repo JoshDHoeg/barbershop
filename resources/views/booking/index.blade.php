@@ -17,7 +17,6 @@
                     <div class="col-md-12">
                       <table class="table">
                         <thead>
-                          <th>#</th>
                           <th>First</th>
                           <th>Last</th>
                           <th>Phone</th>
@@ -28,14 +27,15 @@
                           @foreach ($bookings as $booking)
 
                             <tr>
-                              <td>{{ $booking['id'] }}</td>
                               <td>{{ $booking['first'] }}</td>
                               <td>{{ $booking['last'] }}</td>
                               <td>{{ $booking['phone'] }}</td>
                               <td>
                                 @if (Route::has('login'))
                                   @auth
-                                      delete
+                                    {!! Form::open(['route' => ['booking.destroy', $booking->id], 'method' => 'DELETE']) !!}
+                                    {!! Form::submit('Delete', ['class' => 'btn btn-danger btn-block']) !!}
+                                    {!! Form::close() !!}
                                   @else
                                       inline
                                   @endauth
